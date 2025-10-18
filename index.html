@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>internhub (Community)</title>
+      <style>
+        /* Dark theme chat toggle button */
+        #ai-chat-toggle {
+          position: fixed;
+          right: 20px;
+          bottom: 20px;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: linear-gradient(135deg,#0ea5a4,#7c3aed);
+          color: #0f172a;
+          border: none;
+          box-shadow: 0 8px 24px rgba(2,6,23,.6);
+          display: grid;
+          place-items: center;
+          cursor: pointer;
+          z-index: 10050;
+          font-size: 20px;
+        }
+
+        /* Fullscreen overlay dark */
+        #ai-chat-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(2,6,23,0.8);
+          backdrop-filter: blur(6px);
+          display: none;
+          align-items: stretch;
+          justify-content: center;
+          z-index: 10040;
+        }
+
+        #ai-chat-panel {
+          margin: 32px;
+          background: linear-gradient(180deg,#071226,#0b1220);
+          color: #e6eef8;
+          border-radius: 12px;
+          width: calc(100% - 64px);
+          height: calc(100% - 64px);
+          max-width: 1100px;
+          max-height: 900px;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(2,6,23,.9);
+          animation: pop .12s ease;
+          border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        @keyframes pop {
+          from { transform: translateY(10px) scale(.995); opacity: 0; }
+          to   { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        /* Header */
+        #ai-chat-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 16px;
+          border-bottom: 1px solid rgba(255,255,255,0.03);
+          background: linear-gradient(90deg,rgba(255,255,255,0.02),transparent);
+        }
+        #ai-chat-title { font-weight: 600; color: #e6eef8; }
+
+        #ai-chat-close {
+          background: transparent;
+          border: none;
+          font-size: 18px;
+          cursor: pointer;
+          padding: 6px;
+          color: #cbd5e1;
+        }
+
+        /* Content area */
+        #ai-chat-content {
+          flex: 1;
+          padding: 16px;
+          overflow: auto;
+          background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+        }
+
+        /* Message bubbles */
+        .msg {
+          padding: 12px;
+          margin-bottom: 10px;
+          border-radius: 10px;
+          max-width: 82%;
+          line-height: 1.4;
+          white-space: pre-wrap;
+        }
+        .msg.user {
+          margin-left: auto;
+          background: linear-gradient(180deg,#05203a,#073044);
+          color: #dbeafe;
+          border: 1px solid rgba(99,102,241,0.12);
+        }
+        .msg.ai {
+          margin-right: auto;
+          background: linear-gradient(180deg,#081226,#061428);
+          color: #e6eef8;
+          border: 1px solid rgba(255,255,255,0.04);
+        }
+        .msg.system {
+          background: transparent;
+          color: #94a3b8;
+          border: 0;
+          margin: 6px 0 16px 0;
+        }
+
+        /* Input area */
+        #ai-chat-input {
+          display: flex;
+          gap: 8px;
+          padding: 12px;
+          border-top: 1px solid rgba(255,255,255,0.03);
+          background: linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));
+        }
+        #ai-chat-input textarea {
+          flex: 1;
+          resize: none;
+          padding: 10px;
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.04);
+          min-height: 56px;
+          font-family: inherit;
+          background: rgba(255,255,255,0.02);
+          color: #e6eef8;
+        }
+        #ai-chat-input button {
+          background: linear-gradient(180deg,#06b6d4,#7c3aed);
+          color: #071226;
+          border: none;
+          padding: 0 14px;
+          border-radius: 8px;
+          cursor: pointer;
+          min-width: 84px;
+        }
+
+        /* small screens adjustments */
+        @media (max-width: 640px) {
+          #ai-chat-panel { margin: 8px; width: calc(100% - 16px); height: calc(100% - 16px); border-radius: 8px; }
+          #ai-chat-toggle { width: 48px; height: 48px; right: 14px; bottom: 14px; }
+        }
+      </style>
+    </head>
+
+    <body>
+      <div id="root"></div>
+
+      <!-- Chat toggle button -->
+      <button id="ai-chat-toggle" aria-label="Open AI chat" title="Open AI chat">💬</button>
+
+      <!-- Fullscreen AI chat overlay -->
+      <div id="ai-chat-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div id="ai-chat-panel" role="document" aria-label="AI Internship Assistant">
+          <div id="ai-chat-header">
+            <div id="ai-chat-title">Internship Assistant</div>
+            <div>
+              <button id="ai-chat-close" aria-label="Close chat">✕</button>
+            </div>
+          </div>
+
+          <div id="ai-chat-content" aria-live="polite">
+            <!-- System message (hidden style for context) -->
+            <div class="msg system" id="system-note">
+              Assistant ready to answer internship-related questions: applications, resumes, interviews, projects, and internships matching skills.
+            </div>
+
+            <div id="ai-messages" style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#e6eef8;">
+              <div class="msg ai" style="border:1px solid rgba(255,255,255,0.04);">
+                Hi — ask me anything about internships (resumes, cover letters, interview prep, finding roles).
+              </div>
+            </div>
+          </div>
+
+          <div id="ai-chat-input">
+            <textarea id="ai-input" placeholder="Ask about internships..."></textarea>
+            <button id="ai-send">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <script type="module" src="/src/main.tsx"></script>
+
+      <script>
+        // If you MUST test from client only, put a key here (not recommended for production)
+        // window.OPENAI_API_KEY = ''; // <-- add your key for local dev ONLY
+
+        const SYSTEM_PROMPT = "You are an expert internship advisor for students. Answer concisely and helpfully about internships: searching, applications, resumes, cover letters, interviews, required skills, sample projects, timelines, and next steps. If user asks unrelated topics, gently steer back to internships.";
+
+        // elements
+        const toggle = document.getElementById('ai-chat-toggle');
+        const overlay = document.getElementById('ai-chat-overlay');
+        const closeBtn = document.getElementById('ai-chat-close');
+        const sendBtn = document.getElementById('ai-send');
+        const input = document.getElementById('ai-input');
+        const messages = document.getElementById('ai-messages');
+        const systemNote = document.getElementById('system-note');
+
+        // maintain conversation for context
+        const convo = [
+          { role: 'system', content: SYSTEM_PROMPT }
+        ];
+
+        function appendMessage(role, text) {
+          const div = document.createElement('div');
+          div.className = 'msg ' + (role === 'user' ? 'user' : role === 'system' ? 'system' : 'ai');
+          div.textContent = (role === 'user' ? 'You: ' : role === 'ai' ? 'Assistant: ' : '') + text;
+          messages.appendChild(div);
+          messages.scrollTop = messages.scrollHeight;
+        }
+
+        function setLoading(loading) {
+          sendBtn.disabled = loading;
+          sendBtn.textContent = loading ? 'Thinking…' : 'Send';
+        }
+
+        async function callProxyApi(payload) {
+          const res = await fetch('http://localhost:3000/api/ai-chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) throw new Error('Proxy error: ' + res.status);
+          return res.json();
+        }
+
+        async function callOpenAIClientSide(messagesForAPI) {
+          const key = window.OPENAI_API_KEY;
+          if (!key) throw new Error('No client-side API key set.');
+          const res = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + key,
+            },
+            body: JSON.stringify({
+              model: 'gpt-4o-mini', // change to available model if needed
+              messages: messagesForAPI,
+              max_tokens: 800,
+              temperature: 0.2
+            }),
+          });
+          if (!res.ok) {
+            const txt = await res.text();
+            throw new Error('OpenAI error: ' + res.status + ' ' + txt);
+          }
+          return res.json();
+        }
+
+        async function askAI(text) {
+          // update conversation and UI
+          convo.push({ role: 'user', content: text });
+          appendMessage('user', text);
+          setLoading(true);
+
+          try {
+            // prefer server-side proxy
+            let apiResp;
+            try {
+              apiResp = await callProxyApi({ messages: convo });
+            } catch (e) {
+              // proxy missing => try direct client-side if key present
+              apiResp = await callOpenAIClientSide(convo);
+            }
+
+            // adapt to both proxy and direct shapes:
+            // expected: { choices: [{ message: { role, content } }] } or { reply: "..." }
+            let replyText = '';
+            if (apiResp.reply) {
+              replyText = apiResp.reply;
+            } else if (apiResp.choices && apiResp.choices[0] && apiResp.choices[0].message && apiResp.choices[0].message.content) {
+              replyText = apiResp.choices[0].message.content;
+            } else if (apiResp.choices && apiResp.choices[0] && apiResp.choices[0].text) {
+              replyText = apiResp.choices[0].text;
+            } else {
+              replyText = 'Sorry, no response from AI.';
+            }
+
+            convo.push({ role: 'assistant', content: replyText });
+            appendMessage('ai', replyText);
+          } catch (err) {
+            const errMsg = (err && err.message) ? err.message : String(err);
+            appendMessage('ai', 'Error: ' + errMsg + '. Configure /api/ai-chat proxy or set window.OPENAI_API_KEY for local testing.');
+          } finally {
+            setLoading(false);
+            input.value = '';
+            input.focus();
+          }
+        }
+
+        function openChat() {
+          overlay.style.display = 'flex';
+          overlay.setAttribute('aria-hidden', 'false');
+          input.focus();
+        }
+        function closeChat() {
+          overlay.style.display = 'none';
+          overlay.setAttribute('aria-hidden', 'true');
+          toggle.focus();
+        }
+
+        toggle.addEventListener('click', openChat);
+        closeBtn.addEventListener('click', closeChat);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeChat(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChat(); });
+
+        sendBtn.addEventListener('click', () => {
+          const text = input.value.trim();
+          if (!text) return;
+          askAI(text);
+        });
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendBtn.click();
+          }
+        });
+
+        // quick double click toggle
+        toggle.addEventListener('dblclick', () => {
+          if (overlay.style.display === 'flex') closeChat(); else openChat();
+        });
+      </script>
+    </body>
+  </html>

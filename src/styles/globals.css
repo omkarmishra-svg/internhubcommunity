@@ -1,0 +1,2027 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --font-heading: 'Poppins', 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-button: 'Montserrat', sans-serif;
+  --background: #f8fafb;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #06b6d4;
+  --accent-foreground: #ffffff;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: #0B1220;
+  --foreground: #FFFFFF;
+  --card: #111827;
+  --card-foreground: #FFFFFF;
+  --popover: #111827;
+  --popover-foreground: #FFFFFF;
+  --primary: #22C1C3;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1E293B;
+  --secondary-foreground: #CBD5E1;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #22C1C3;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #1E293B;
+  --input: #111827;
+  --input-background: #111827;
+  --switch-background: #1E293B;
+  --ring: #22C1C3;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --chart-1: #22C1C3;
+  --chart-2: #10B981;
+  --chart-3: #F59E0B;
+  --chart-4: #EF4444;
+  --chart-5: #8b5cf6;
+  --sidebar: #111827;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #22C1C3;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #CBD5E1;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #22C1C3;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Force dark background everywhere */
+  .dark body {
+    background-color: #0B1220 !important;
+    color: #FFFFFF !important;
+    font-family: var(--font-body);
+  }
+  
+  .dark * {
+    border-color: #1E293B;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #FFFFFF;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #FFFFFF;
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #FFFFFF;
+    }
+
+    h4 {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #FFFFFF;
+    }
+
+    p {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: 400;
+      line-height: 1.6;
+      color: #FFFFFF;
+    }
+
+    label {
+      font-family: var(--font-button);
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.5;
+      color: #FFFFFF;
+    }
+
+    button {
+      font-family: var(--font-button);
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    input {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Animated Background - Education Theme */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-30px) rotate(5deg);
+  }
+  66% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-25px) rotate(-5deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes book-flip {
+  0%, 100% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(180deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Main animated background - Dark Theme with New Colors */
+.animated-background {
+  background: linear-gradient(-45deg, #0B1220, #111827, #1E293B, #111827, #0B1220, #111827);
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay patterns - Dark Theme with New Accent Color */
+.animated-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(34, 193, 195, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 40% 60%, rgba(34, 193, 195, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 60% 20%, rgba(31, 162, 164, 0.1) 0%, transparent 40%);
+  animation: pulse-glow 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Education-themed floating elements - Dark Theme */
+.floating-shape {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.08;
+  filter: grayscale(0.5) brightness(1.2);
+  user-select: none;
+}
+
+/* Graduation Cap */
+.floating-shape-1 {
+  font-size: 60px;
+  top: 10%;
+  left: 15%;
+  animation: float 25s ease-in-out infinite;
+}
+
+/* Book */
+.floating-shape-2 {
+  font-size: 50px;
+  top: 65%;
+  left: 75%;
+  animation: float-reverse 30s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Bulb */
+.floating-shape-3 {
+  font-size: 45px;
+  top: 40%;
+  left: 85%;
+  animation: twinkle 8s ease-in-out infinite;
+  animation-delay: 5s;
+  filter: grayscale(0.2);
+}
+
+/* Pencil */
+.floating-shape-4 {
+  font-size: 50px;
+  top: 20%;
+  right: 10%;
+  animation: float 28s ease-in-out infinite;
+  animation-delay: 7s;
+  opacity: 0.1;
+}
+
+/* Certificate */
+.floating-shape-5 {
+  font-size: 65px;
+  top: 80%;
+  left: 20%;
+  animation: float-reverse 35s ease-in-out infinite;
+  animation-delay: 10s;
+  opacity: 0.1;
+}
+
+/* Laptop */
+.floating-shape-6 {
+  font-size: 60px;
+  top: 50%;
+  left: 5%;
+  animation: float 32s ease-in-out infinite;
+  animation-delay: 2s;
+  opacity: 0.1;
+}
+
+/* Trophy */
+.floating-shape-7 {
+  font-size: 55px;
+  top: 15%;
+  right: 25%;
+  animation: twinkle 12s ease-in-out infinite;
+  animation-delay: 4s;
+  filter: grayscale(0.2);
+}
+
+/* Target */
+.floating-shape-8 {
+  font-size: 48px;
+  top: 75%;
+  right: 15%;
+  animation: float-reverse 27s ease-in-out infinite;
+  animation-delay: 6s;
+  opacity: 0.1;
+}
+
+/* Rocket */
+.floating-shape-9 {
+  font-size: 50px;
+  top: 35%;
+  left: 45%;
+  animation: float 29s ease-in-out infinite;
+  animation-delay: 8s;
+  opacity: 0.1;
+}
+
+/* Animate pulse slow utility */
+@keyframes animate-pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Component animations for dashboard and pages */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out;
+}
+
+/* Custom Scrollbar for Dark Theme */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #111827;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #22C1C3;
+}
+
+.scrollbar-thumb-gray-700::-webkit-scrollbar-thumb {
+  background: #1E293B;
+}
+
+.scrollbar-track-gray-900::-webkit-scrollbar-track {
+  background: #0B1220;
+}
+
+/* Glassmorphism effects for dark theme */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+
+/* Dark theme enhancements */
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Glow effects for interactive elements - Updated with new accent color */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 193, 195, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 193, 195, 0.5);
+  }
+}
+
+.hover-glow:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Gradient text animations */
+@keyframes gradient-shift-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift-text 3s ease infinite;
+}
+
+/* Dark theme text color overrides with proper hierarchy */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+}
+
+.dark p {
+  font-family: var(--font-body) !important;
+  color: #FFFFFF !important;
+}
+
+.dark label {
+  font-family: var(--font-button) !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+}
+
+.dark span {
+  color: #FFFFFF !important;
+}
+
+.dark div {
+  color: #FFFFFF !important;
+}
+
+/* Force ALL text to white or visible light colors */
+.dark .text-gray-50 { color: #ffffff !important; }
+.dark .text-gray-100 { color: #ffffff !important; }
+.dark .text-gray-200 { color: #ffffff !important; }
+.dark .text-gray-300 { color: #CBD5E1 !important; }
+.dark .text-gray-400 { color: #94A3B8 !important; }
+.dark .text-gray-500 { color: #94A3B8 !important; }
+.dark .text-gray-600 { color: #CBD5E1 !important; }
+.dark .text-gray-700 { color: #ffffff !important; }
+.dark .text-gray-800 { color: #ffffff !important; }
+.dark .text-gray-900 { color: #ffffff !important; }
+
+/* Fix muted text - use proper hierarchy */
+.dark .text-muted-foreground {
+  color: #94A3B8 !important;
+}
+
+.dark .text-secondary {
+  color: #CBD5E1 !important;
+}
+
+/* Fix black text */
+.dark .text-black {
+  color: #ffffff !important;
+}
+
+/* Fix text-transparent - should only apply to specific gradient text headings */
+.dark .text-transparent {
+  /* Only make transparent if it has bg-clip-text */
+}
+
+/* Headings with gradient should be visible */
+.dark h1.text-transparent,
+.dark h2.text-transparent,
+.dark h3.text-transparent {
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Input and form elements - Dark backgrounds with new colors */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+  font-family: var(--font-body) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Card text visibility - Dark cards with white text and new colors */
+.dark [class*="card"] {
+  background-color: #111827 !important;
+  border-color: #1E293B !important;
+  color: #FFFFFF !important;
+}
+
+/* All text inside cards must be visible */
+.dark [class*="card"] * {
+  color: inherit !important;
+}
+
+.dark [class*="card"] h1,
+.dark [class*="card"] h2,
+.dark [class*="card"] h3,
+.dark [class*="card"] h4,
+.dark [class*="card"] h5,
+.dark [class*="card"] h6 {
+  color: #FFFFFF !important;
+}
+
+.dark [class*="card"] p {
+  color: #FFFFFF !important;
+}
+
+/* Card with specific background colors */
+.dark .bg-gray-800\/50,
+.dark .bg-gray-800\/70 {
+  background-color: rgba(17, 24, 39, 0.5) !important;
+}
+
+.dark .bg-gray-800\/50 *,
+.dark .bg-gray-800\/70 * {
+  color: #FFFFFF !important;
+}
+
+/* Button text - Always white with proper font */
+.dark button {
+  font-family: var(--font-button) !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.dark button * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.dark button:not([class*="bg-"]):not([class*="gradient"]) {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Link colors - Updated with new accent */
+.dark a {
+  color: #22C1C3 !important;
+}
+
+.dark a:hover {
+  color: #1FA2A4 !important;
+}
+
+/* Table text */
+.dark table,
+.dark td,
+.dark th {
+  font-family: var(--font-body) !important;
+  color: #FFFFFF !important;
+}
+
+/* List items */
+.dark li {
+  font-family: var(--font-body) !important;
+  color: #FFFFFF !important;
+}
+
+/* Small and caption text - Use secondary text color */
+.dark small,
+.dark caption {
+  color: #CBD5E1 !important;
+}
+
+/* Strong and bold */
+.dark strong,
+.dark b {
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+}
+
+/* Badge text - make all visible */
+.dark [class*="badge"],
+.dark .inline-flex {
+  color: inherit;
+}
+
+/* Dropdown and select menus - Dark with white text and new colors */
+.dark [role="menuitem"],
+.dark [role="option"] {
+  color: #FFFFFF !important;
+  background-color: #111827 !important;
+}
+
+.dark [role="menuitem"]:hover,
+.dark [role="option"]:hover {
+  background-color: #1E293B !important;
+  color: #FFFFFF !important;
+}
+
+/* Popover and dialog content - Dark with white text and new colors */
+.dark [role="dialog"],
+.dark [data-radix-popper-content-wrapper] {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+}
+
+/* Tooltip - Dark with white text and new colors */
+.dark [role="tooltip"] {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+}
+
+/* Tab content - White text */
+.dark [role="tabpanel"] {
+  color: #FFFFFF !important;
+}
+
+/* Calendar and date picker - New colors */
+.dark [class*="calendar"] button {
+  color: #FFFFFF !important;
+  background-color: #111827 !important;
+}
+
+.dark [class*="calendar"] [aria-selected="true"] {
+  background-color: #22C1C3 !important;
+  color: #FFFFFF !important;
+}
+
+/* Progress bar text */
+.dark [role="progressbar"] {
+  background-color: #1E293B !important;
+}
+
+/* Alert text */
+.dark [role="alert"] {
+  color: #FFFFFF !important;
+  background-color: #111827 !important;
+}
+
+/* Status text */
+.dark [role="status"] {
+  color: #FFFFFF !important;
+}
+
+/* Navigation text - White with new colors */
+.dark nav,
+.dark nav a,
+.dark nav button {
+  color: #FFFFFF !important;
+  background-color: #111827 !important;
+}
+
+/* Footer text - White with new colors */
+.dark footer {
+  color: #FFFFFF !important;
+  background-color: #0B1220 !important;
+}
+
+.dark footer a {
+  color: #22C1C3 !important;
+}
+
+/* Sidebar text - Dark background with white text and new colors */
+.dark aside {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+}
+
+.dark aside a,
+.dark aside button {
+  color: #FFFFFF !important;
+}
+
+/* Ensure all text in containers is white */
+.dark [class*="container"],
+.dark [class*="wrapper"],
+.dark [class*="content"] {
+  color: #FFFFFF !important;
+}
+
+/* Code and pre blocks - Dark with white text and new colors */
+.dark code,
+.dark pre {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+
+/* Blockquote - White text with new border */
+.dark blockquote {
+  color: #CBD5E1 !important;
+  border-left-color: #1E293B !important;
+}
+
+/* HR elements - New border color */
+.dark hr {
+  border-color: #1E293B !important;
+}
+
+/* Focus visible text - New accent color */
+.dark *:focus-visible {
+  outline-color: #22C1C3 !important;
+  outline-width: 2px !important;
+  outline-offset: 2px !important;
+}
+
+/* Disabled elements - Muted text */
+.dark :disabled,
+.dark [disabled] {
+  opacity: 0.5;
+  color: #94A3B8 !important;
+}
+
+/* Placeholder in all contexts - Muted text */
+.dark ::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1;
+}
+
+.dark ::-webkit-input-placeholder {
+  color: #94A3B8 !important;
+}
+
+.dark ::-moz-placeholder {
+  color: #94A3B8 !important;
+}
+
+.dark :-ms-input-placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Selection - New accent color */
+.dark ::selection {
+  background-color: #22C1C3 !important;
+  color: #FFFFFF !important;
+}
+
+/* Scrollbar text (if any) */
+.dark ::-webkit-scrollbar-button {
+  background-color: #1E293B !important;
+}
+
+/* ========================================
+   COMPREHENSIVE DARK THEME OVERRIDES
+   All backgrounds dark, all text white
+   ======================================== */
+
+/* Force dark backgrounds everywhere with new colors */
+.dark main {
+  background-color: transparent !important;
+}
+
+.dark section {
+  background-color: transparent !important;
+}
+
+.dark article {
+  background-color: transparent !important;
+}
+
+.dark header {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+}
+
+/* All containers and wrappers must be dark with new colors */
+.dark .container,
+.dark .wrapper,
+.dark .content,
+.dark [class*="container"],
+.dark [class*="wrapper"],
+.dark [class*="content"] {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+}
+
+/* All cards dark background with new colors */
+.dark .card,
+.dark [data-component="card"] {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+}
+
+/* Specific border color overrides */
+.dark .border-gray-700 {
+  border-color: #1E293B !important;
+}
+
+.dark .border-gray-600 {
+  border-color: #1E293B !important;
+}
+
+.dark .border-gray-800 {
+  border-color: #1E293B !important;
+}
+
+/* Grid and flex containers */
+.dark .grid,
+.dark .flex,
+.dark [class*="grid"],
+.dark [class*="flex"] {
+  color: #FFFFFF !important;
+}
+
+/* Specific text elements with proper hierarchy */
+.dark .text-foreground {
+  color: #FFFFFF !important;
+}
+
+.dark .text-card-foreground {
+  color: #FFFFFF !important;
+}
+
+.dark .text-popover-foreground {
+  color: #FFFFFF !important;
+}
+
+.dark .text-primary-foreground {
+  color: #FFFFFF !important;
+}
+
+.dark .text-secondary-foreground {
+  color: #CBD5E1 !important;
+}
+
+.dark .text-accent-foreground {
+  color: #FFFFFF !important;
+}
+
+/* Background color overrides with new colors */
+.dark .bg-background {
+  background-color: #0B1220 !important;
+}
+
+.dark .bg-card {
+  background-color: #111827 !important;
+}
+
+.dark .bg-popover {
+  background-color: #111827 !important;
+}
+
+.dark .bg-secondary {
+  background-color: #1E293B !important;
+}
+
+.dark .bg-muted {
+  background-color: #1E293B !important;
+}
+
+/* Ensure no light backgrounds slip through */
+.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-100,
+.dark .bg-gray-200 {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-700,
+.dark .bg-gray-800,
+.dark .bg-gray-900 {
+  background-color: #111827 !important;
+}
+
+/* Text colors - force everything white or light */
+.dark .text-white {
+  color: #ffffff !important;
+}
+
+.dark * {
+  /* Default text color for all elements */
+  color: inherit;
+}
+
+/* Headings absolutely white */
+.dark h1 *,
+.dark h2 *,
+.dark h3 *,
+.dark h4 *,
+.dark h5 *,
+.dark h6 * {
+  color: #ffffff !important;
+}
+
+/* Paragraph text white */
+.dark p,
+.dark p * {
+  color: #ffffff !important;
+}
+
+/* Divs should not override if child has text */
+.dark div > * {
+  color: inherit;
+}
+
+/* All text utility classes white */
+.dark [class*="text-"] {
+  color: #ffffff !important;
+}
+
+/* Exception for text-transparent on headings with gradients */
+.dark h1[class*="text-transparent"],
+.dark h2[class*="text-transparent"],
+.dark h3[class*="text-transparent"],
+.dark h4[class*="text-transparent"] {
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* But NOT on buttons or other elements */
+.dark button[class*="text-transparent"] {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.dark button[class*="text-transparent"] * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Accent and status colors */
+.dark .text-cyan-400,
+.dark .text-cyan-500,
+.dark .text-cyan-600,
+.dark .text-primary {
+  color: #22C1C3 !important;
+}
+
+.dark .text-purple-400,
+.dark .text-purple-500,
+.dark .text-purple-600 {
+  color: #8b5cf6 !important;
+}
+
+.dark .text-green-400,
+.dark .text-green-500,
+.dark .text-success {
+  color: #10B981 !important;
+}
+
+.dark .text-red-400,
+.dark .text-red-500,
+.dark .text-error,
+.dark .text-destructive {
+  color: #EF4444 !important;
+}
+
+.dark .text-yellow-400,
+.dark .text-yellow-500,
+.dark .text-warning {
+  color: #F59E0B !important;
+}
+
+.dark .text-blue-400,
+.dark .text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+/* Background accent colors */
+.dark .bg-primary {
+  background-color: #22C1C3 !important;
+}
+
+.dark .bg-success {
+  background-color: #10B981 !important;
+}
+
+.dark .bg-warning {
+  background-color: #F59E0B !important;
+}
+
+.dark .bg-error,
+.dark .bg-destructive {
+  background-color: #EF4444 !important;
+}
+
+/* Badge backgrounds with new colors */
+.dark [class*="badge"] {
+  background-color: #111827 !important;
+  border-color: #1E293B !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-button) !important;
+  font-weight: 600 !important;
+}
+
+/* All modals and overlays dark with new colors */
+.dark .modal,
+.dark .overlay,
+.dark [role="alertdialog"],
+.dark [data-state="open"] {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+}
+
+/* SVG icons should be visible */
+.dark svg {
+  color: inherit;
+  fill: currentColor;
+}
+
+/* SVG icons in gradient backgrounds must be white */
+.dark [class*="bg-gradient"] svg {
+  color: #FFFFFF !important;
+}
+
+/* Lucide icons in buttons */
+.dark button > svg,
+.dark [role="button"] > svg {
+  color: #FFFFFF !important;
+  stroke: currentColor !important;
+}
+
+/* Images should maintain their colors */
+.dark img {
+  opacity: 1;
+}
+
+/* Video elements */
+.dark video {
+  background-color: #000000;
+}
+
+/* Ensure gradient text is visible - IMPORTANT FIX */
+.dark [class*="gradient"] {
+  /* Do NOT make gradient buttons transparent */
+}
+
+/* Fix for gradient background with bg-clip-text */
+.dark .bg-clip-text {
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* But ensure gradient BUTTONS have visible white text */
+.dark button[class*="gradient"],
+.dark .bg-gradient-to-r,
+.dark .bg-gradient-to-l,
+.dark .bg-gradient-to-t,
+.dark .bg-gradient-to-b {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Specific fix for button text inside gradient backgrounds */
+.dark button[class*="from-"],
+.dark button[class*="to-"] {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Make sure animated backgrounds stay dark with new colors */
+.dark .animated-background {
+  background: linear-gradient(-45deg, #0B1220, #111827, #1E293B, #111827, #0B1220, #111827) !important;
+}
+
+/* Floating shapes should be subtle */
+.dark .floating-shape {
+  opacity: 0.08 !important;
+  filter: grayscale(0.5) brightness(1.2);
+}
+
+/* Final catch-all for any remaining elements */
+.dark {
+  background-color: #0B1220;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+}
+
+.dark * {
+  box-sizing: border-box;
+}
+
+/* Hover states for accent color */
+.dark .hover\:bg-primary:hover {
+  background-color: #1FA2A4 !important;
+}
+
+.dark .hover\:text-primary:hover {
+  color: #1FA2A4 !important;
+}
+
+/* ========================================
+   CRITICAL BUTTON TEXT VISIBILITY FIXES
+   ======================================== */
+
+/* Ensure ALL buttons have visible white text */
+.dark button,
+.dark [role="button"],
+.dark .button {
+  color: #FFFFFF !important;
+}
+
+/* Ensure button children are visible */
+.dark button > *,
+.dark [role="button"] > *,
+.dark .button > * {
+  color: #FFFFFF !important;
+}
+
+/* Gradient buttons MUST have white text */
+.dark button[class*="bg-gradient"],
+.dark [role="button"][class*="bg-gradient"] {
+  color: #FFFFFF !important;
+}
+
+/* All text inside gradient buttons */
+.dark button[class*="bg-gradient"] *,
+.dark [role="button"][class*="bg-gradient"] * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* SVG icons in buttons */
+.dark button svg,
+.dark [role="button"] svg {
+  color: #FFFFFF !important;
+  fill: currentColor !important;
+}
+
+/* Card stat text must be visible */
+.dark .text-6xl,
+.dark .text-5xl,
+.dark .text-4xl,
+.dark .text-3xl,
+.dark .text-2xl,
+.dark .text-xl,
+.dark .text-lg,
+.dark .text-base {
+  color: #FFFFFF !important;
+}
+
+/* Small text - use secondary color for hierarchy */
+.dark .text-sm {
+  color: #CBD5E1 !important;
+}
+
+.dark .text-xs {
+  color: #94A3B8 !important;
+}
+
+/* Font size utilities on stats */
+.dark [class*="text-"][class*="xl"],
+.dark [class*="text-lg"] {
+  color: #FFFFFF !important;
+}
+
+/* Override any conflicting rules for buttons */
+.dark button[class*="from-"] *,
+.dark button[class*="to-"] *,
+.dark button[class*="via-"] * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Ensure all flex and grid items in buttons are white */
+.dark button .flex,
+.dark button .inline-flex,
+.dark button .grid {
+  color: #FFFFFF !important;
+}
+
+.dark button .flex *,
+.dark button .inline-flex *,
+.dark button .grid * {
+  color: #FFFFFF !important;
+}
+
+/* Badge inside buttons must be visible */
+.dark button [class*="badge"],
+.dark button .badge {
+  color: #FFFFFF !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Any span inside button */
+.dark button span,
+.dark [role="button"] span {
+  color: #FFFFFF !important;
+}
+
+/* Text inside gradient cards visible */
+.dark [class*="from-"][class*="to-"] {
+  color: #FFFFFF !important;
+}
+
+.dark [class*="from-"][class*="to-"] * {
+  color: inherit !important;
+}
+
+/* Final catch-all for any remaining invisible text */
+.dark [class*="bg-gradient"] {
+  color: #FFFFFF !important;
+}
+
+.dark [class*="bg-gradient"] h1,
+.dark [class*="bg-gradient"] h2,
+.dark [class*="bg-gradient"] h3,
+.dark [class*="bg-gradient"] h4,
+.dark [class*="bg-gradient"] p,
+.dark [class*="bg-gradient"] span,
+.dark [class*="bg-gradient"] div {
+  color: #FFFFFF !important;
+}
+
+/* ========================================
+   SIDEBAR SPECIFIC FIXES - CRITICAL!
+   ======================================== */
+
+/* Force sidebar background to be dark */
+.dark .fixed.lg\:sticky,
+.dark aside.fixed {
+  background-color: #111827 !important;
+  border-color: #1E293B !important;
+}
+
+/* All sidebar buttons and navigation items */
+.dark nav button,
+.dark nav a {
+  color: #FFFFFF !important;
+}
+
+/* Sidebar navigation icons - MUST BE VISIBLE */
+.dark nav button svg,
+.dark nav a svg,
+.dark aside svg {
+  color: #FFFFFF !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+/* Active navigation items */
+.dark nav button[class*="from-cyan"] svg,
+.dark nav button[class*="to-teal"] svg {
+  color: #FFFFFF !important;
+}
+
+/* Inactive navigation items - lighter but visible */
+.dark nav button:not([class*="from-"]) {
+  color: #CBD5E1 !important;
+}
+
+.dark nav button:not([class*="from-"]) svg {
+  color: #CBD5E1 !important;
+}
+
+/* Hover state for nav items */
+.dark nav button:hover {
+  color: #FFFFFF !important;
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.dark nav button:hover svg {
+  color: #FFFFFF !important;
+}
+
+/* Mobile menu toggle button */
+.dark button.fixed.top-4 {
+  background-color: #111827 !important;
+  border: 1px solid #1E293B !important;
+}
+
+.dark button.fixed.top-4 svg {
+  color: #FFFFFF !important;
+}
+
+.dark button.fixed.top-4:hover {
+  background-color: #1E293B !important;
+}
+
+/* Sidebar borders */
+.dark .border-gray-200 {
+  border-color: #1E293B !important;
+}
+
+/* ========================================
+   CARD AND BOX TEXT VISIBILITY FIXES
+   ======================================== */
+
+/* ALL cards must have visible text */
+.dark .bg-gradient-to-br,
+.dark .bg-gradient-to-tr,
+.dark .bg-gradient-to-tl,
+.dark .bg-gradient-to-bl {
+  color: #FFFFFF !important;
+}
+
+/* Gradient background cards - text visible */
+.dark [class*="from-cyan"][class*="to-teal"] {
+  color: #FFFFFF !important;
+}
+
+.dark [class*="from-cyan"][class*="to-teal"] * {
+  color: #FFFFFF !important;
+}
+
+.dark [class*="from-purple"][class*="to-pink"] {
+  color: #FFFFFF !important;
+}
+
+.dark [class*="from-purple"][class*="to-pink"] * {
+  color: #FFFFFF !important;
+}
+
+/* Profile card in sidebar */
+.dark .from-cyan-50 {
+  background: linear-gradient(to bottom right, rgba(34, 193, 195, 0.1), rgba(16, 185, 129, 0.1)) !important;
+  border-color: rgba(34, 193, 195, 0.3) !important;
+}
+
+.dark .from-cyan-50 * {
+  color: #FFFFFF !important;
+}
+
+/* Avatar text */
+.dark [class*="avatar"] {
+  color: #FFFFFF !important;
+}
+
+/* Ensure p tags in cards are visible */
+.dark .p-4 p,
+.dark .p-6 p,
+.dark .p-8 p {
+  color: #FFFFFF !important;
+}
+
+/* Truncate text must be visible */
+.dark .truncate {
+  color: inherit !important;
+}
+
+/* ========================================
+   FORM AND INPUT TEXT FIXES
+   ======================================== */
+
+/* All input fields visible */
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="number"],
+.dark input[type="search"] {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+}
+
+/* Label text visible */
+.dark form label {
+  color: #FFFFFF !important;
+}
+
+/* Form helper text */
+.dark form small,
+.dark form .text-sm {
+  color: #CBD5E1 !important;
+}
+
+/* ========================================
+   ICON VISIBILITY OVERRIDES
+   ======================================== */
+
+/* ALL Lucide icons must be visible */
+.dark svg[class*="lucide"] {
+  color: #FFFFFF !important;
+  stroke: currentColor !important;
+}
+
+/* Icons in any container */
+.dark .flex svg,
+.dark .inline-flex svg,
+.dark .grid svg {
+  color: inherit !important;
+}
+
+/* Menu and X icons specifically */
+.dark svg.w-5.h-5,
+.dark svg.w-4.h-4,
+.dark svg.w-6.h-6 {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+/* ========================================
+   SPECIFIC COMPONENT FIXES
+   ======================================== */
+
+/* Button variants */
+.dark button[class*="variant"] {
+  color: #FFFFFF !important;
+}
+
+/* Outline buttons */
+.dark button[class*="outline"] {
+  color: #FFFFFF !important;
+  border-color: #1E293B !important;
+}
+
+.dark button[class*="outline"]:hover {
+  background-color: #1E293B !important;
+}
+
+/* Ghost buttons */
+.dark button[class*="ghost"] {
+  color: #FFFFFF !important;
+}
+
+.dark button[class*="ghost"]:hover {
+  background-color: #1E293B !important;
+}
+
+/* Link buttons */
+.dark button[class*="link"] {
+  color: #22C1C3 !important;
+}
+
+/* Destructive buttons */
+.dark button[class*="destructive"],
+.dark button.text-red-600 {
+  color: #EF4444 !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.dark button[class*="destructive"] svg,
+.dark button.text-red-600 svg {
+  color: #EF4444 !important;
+}
+
+/* ========================================
+   FLEX AND GRID LAYOUT TEXT
+   ======================================== */
+
+/* Flex items text */
+.dark .flex.items-center,
+.dark .flex.items-start,
+.dark .flex.items-end {
+  color: inherit !important;
+}
+
+.dark .flex.items-center *,
+.dark .flex.items-start *,
+.dark .flex.items-end * {
+  color: inherit !important;
+}
+
+/* Gap utility text */
+.dark .gap-3 *,
+.dark .gap-4 *,
+.dark .gap-2 * {
+  color: inherit !important;
+}
+
+/* ========================================
+   RESPONSIVE TEXT FIXES
+   ======================================== */
+
+/* Mobile responsive text */
+.dark .lg\:hidden,
+.dark .md\:block,
+.dark .sm\:flex {
+  color: inherit !important;
+}
+
+/* ========================================
+   SHADOW AND BORDER FIXES
+   ======================================== */
+
+/* Remove light shadows in dark mode */
+.dark .shadow-lg,
+.dark .shadow-md,
+.dark .shadow-sm {
+  box-shadow: 0 0 0 1px rgba(30, 41, 59, 0.5), 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Border colors consistent */
+.dark .border-cyan-200 {
+  border-color: rgba(34, 193, 195, 0.3) !important;
+}
+
+.dark .border-red-200 {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+/* ========================================
+   FINAL CATCH-ALL RULES
+   ======================================== */
+
+/* Absolutely ensure all text is visible */
+.dark * {
+  color: inherit !important;
+}
+
+.dark button,
+.dark a,
+.dark nav,
+.dark aside {
+  color: #FFFFFF !important;
+}
+
+/* Override any remaining gray backgrounds */
+.dark .bg-gray-50,
+.dark .bg-gray-100 {
+  background-color: rgba(17, 24, 39, 0.3) !important;
+}
+
+/* Ensure white backgrounds become dark */
+.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+/* All text-gray utilities visible */
+.dark [class*="text-gray"] {
+  color: #CBD5E1 !important;
+}
+
+/* ========================================
+   END CRITICAL FIXES
+   ======================================== */
+
+/* ========================================
+   END COMPREHENSIVE OVERRIDES
+   ======================================== */
+
+/* ========================================
+   ULTRA PRIORITY OVERRIDES - LAST RESORT
+   Applied with highest specificity
+   ======================================== */
+
+/* Force all buttons to have white text - NO EXCEPTIONS */
+.dark button,
+.dark button *,
+.dark button span,
+.dark button div,
+.dark button svg {
+  color: #FFFFFF !important;
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+/* Force all navigation to have white text */
+.dark nav,
+.dark nav *,
+.dark nav button,
+.dark nav button *,
+.dark nav svg {
+  color: #FFFFFF !important;
+}
+
+/* Force sidebar to dark background */
+.dark aside,
+.dark [class*="sidebar"] {
+  background-color: #111827 !important;
+}
+
+/* Force all cards text visible */
+.dark [class*="card"] p,
+.dark [class*="card"] span,
+.dark [class*="card"] div {
+  color: #FFFFFF !important;
+}
+
+/* Force all gradient backgrounds to have white text */
+.dark [class*="gradient"] *,
+.dark [class*="from-"] *,
+.dark [class*="to-"] * {
+  color: #FFFFFF !important;
+}
+
+/* Force icons to be visible everywhere */
+.dark svg {
+  color: currentColor !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Force menu toggle button visible */
+.dark .fixed.top-4.left-4,
+.dark .fixed.top-4.left-4 * {
+  background-color: #111827 !important;
+  color: #FFFFFF !important;
+}
+
+/* Specific element targeting for maximum compatibility */
+.dark .w-72.flex.flex-col {
+  background-color: #111827 !important;
+}
+
+.dark .w-72.flex.flex-col * {
+  color: #FFFFFF !important;
+}
+
+.dark .w-72.flex.flex-col svg {
+  color: #FFFFFF !important;
+  stroke: currentColor !important;
+}
+
+/* Navigation items in sidebar */
+.dark nav .space-y-1 button {
+  color: #FFFFFF !important;
+}
+
+.dark nav .space-y-1 button svg {
+  color: #FFFFFF !important;
+}
+
+.dark nav .space-y-1 button span {
+  color: #FFFFFF !important;
+}
+
+/* Active navigation (gradient background) */
+.dark nav button.from-cyan-500 {
+  background: linear-gradient(to right, #22C1C3, #1FA2A4) !important;
+}
+
+.dark nav button.from-cyan-500 * {
+  color: #FFFFFF !important;
+}
+
+/* Inactive navigation */
+.dark nav button.text-gray-300 {
+  color: #CBD5E1 !important;
+}
+
+.dark nav button.text-gray-300 svg {
+  color: #CBD5E1 !important;
+}
+
+.dark nav button.text-gray-300:hover {
+  color: #FFFFFF !important;
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+/* Profile card specific */
+.dark .from-cyan-50.to-teal-50 {
+  background: linear-gradient(to bottom right, rgba(34, 193, 195, 0.15), rgba(16, 185, 129, 0.15)) !important;
+  border-color: rgba(34, 193, 195, 0.3) !important;
+}
+
+.dark .from-cyan-50.to-teal-50 p {
+  color: #FFFFFF !important;
+}
+
+/* Avatar fallback */
+.dark .from-cyan-500.to-teal-600 {
+  background: linear-gradient(to bottom right, #22C1C3, #10B981) !important;
+  color: #FFFFFF !important;
+}
+
+/* Ensure borders are visible but subtle */
+.dark .border-b {
+  border-bottom-color: #1E293B !important;
+}
+
+.dark .border-t {
+  border-top-color: #1E293B !important;
+}
+
+.dark .border-r {
+  border-right-color: #1E293B !important;
+}
+
+/* ========================================
+   DASHBOARD & COMPONENTS TEXT FIXES
+   ======================================== */
+
+/* ALL stat boxes and cards must have visible white text */
+.dark .text-4xl,
+.dark .text-7xl {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+/* Progress bars must be visible */
+.dark [role="progressbar"] {
+  background-color: #1E293B !important;
+}
+
+/* Progress bar fill */
+.dark [role="progressbar"] > div {
+  background-color: #22C1C3 !important;
+}
+
+/* Badge text must be visible */
+.dark [class*="badge"] span,
+.dark .inline-flex span {
+  color: inherit !important;
+  font-weight: 600 !important;
+}
+
+/* Level boxes and stat cards */
+.dark .grid > div {
+  color: #FFFFFF !important;
+}
+
+.dark .grid > div * {
+  color: inherit !important;
+}
+
+/* Ensure challenge boxes are visible */
+.dark .space-y-4 > div {
+  color: #FFFFFF !important;
+}
+
+.dark .space-y-3 > div {
+  color: #FFFFFF !important;
+}
+
+/* Circle marks for skills - check and cross */
+.dark .w-5.h-5.bg-green-500,
+.dark .w-7.h-7.bg-green-500 {
+  background-color: #10B981 !important;
+}
+
+.dark .w-5.h-5.bg-red-500,
+.dark .w-7.h-7.bg-red-500 {
+  background-color: #EF4444 !important;
+}
+
+/* Circle borders */
+.dark .rounded-full {
+  border-color: currentColor !important;
+}
+
+/* Success matrices and application tracker */
+.dark .p-3.bg-green-500\/20,
+.dark .p-3.bg-red-500\/20,
+.dark .p-3.bg-yellow-500\/20,
+.dark .p-3.bg-blue-500\/20 {
+  color: #FFFFFF !important;
+}
+
+.dark .p-3 span {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+/* Interview progress and suggestions */
+.dark .space-y-2 > div {
+  color: #FFFFFF !important;
+}
+
+.dark .space-y-2 > div span {
+  color: #FFFFFF !important;
+}
+
+/* Learning resource boxes */
+.dark .grid.gap-4 > div {
+  color: #FFFFFF !important;
+}
+
+.dark .grid.gap-4 > div * {
+  color: inherit !important;
+}
+
+/* Ensure all h2, h3, h4 in cards are white */
+.dark h2, .dark h3, .dark h4 {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+/* Percentage text in badges and stats */
+.dark .font-bold {
+  color: #FFFFFF !important;
+}
+
+/* Small captions and labels */
+.dark .font-semibold {
+  color: inherit !important;
+}
+
+/* XP and score displays */
+.dark .text-cyan-400 {
+  color: #22C1C3 !important;
+}
+
+.dark .text-green-400 {
+  color: #10B981 !important;
+}
+
+.dark .text-yellow-400 {
+  color: #F59E0B !important;
+}
+
+.dark .text-red-400 {
+  color: #EF4444 !important;
+}
+
+.dark .text-orange-400 {
+  color: #FB923C !important;
+}
+
+.dark .text-purple-400 {
+  color: #C084FC !important;
+}
+
+.dark .text-pink-400 {
+  color: #F472B6 !important;
+}
+
+.dark .text-blue-400 {
+  color: #60A5FA !important;
+}
+
+/* Colored text in badges */
+.dark .text-green-300 {
+  color: #86EFAC !important;
+}
+
+.dark .text-yellow-300 {
+  color: #FDE047 !important;
+}
+
+.dark .text-red-300 {
+  color: #FCA5A5 !important;
+}
+
+.dark .text-cyan-300 {
+  color: #67E8F9 !important;
+}
+
+.dark .text-purple-300 {
+  color: #D8B4FE !important;
+}
+
+.dark .text-orange-300 {
+  color: #FDBA74 !important;
+}
+
+.dark .text-blue-300 {
+  color: #93C5FD !important;
+}
+
+.dark .text-pink-300 {
+  color: #F9A8D4 !important;
+}
+
+/* Opacity text still visible */
+.dark .opacity-90 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Percentage displays in circles */
+.dark .text-center > * {
+  color: #FFFFFF !important;
+}
+
+/* ========================================
+   END DASHBOARD FIXES
+   ======================================== */
+
+/* END ULTRA PRIORITY OVERRIDES */
