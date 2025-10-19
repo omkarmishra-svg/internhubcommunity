@@ -8,9 +8,10 @@ import { Logo } from "./Logo";
 
 interface ReviewsPageProps {
   onContinue: () => void;
+  onLogin: () => void;
 }
 
-export function ReviewsPage({ onContinue }: ReviewsPageProps) {
+export function ReviewsPage({ onContinue, onLogin }: ReviewsPageProps) {
   const [selectedFilter, setSelectedFilter] = useState("all");
 
   const testimonials = [
@@ -143,15 +144,26 @@ export function ReviewsPage({ onContinue }: ReviewsPageProps) {
             AI-powered skill analysis, mock interviews, and gamified learning experience.
           </p>
 
-          {/* CTA Button */}
-          <Button
-            onClick={onContinue}
-            size="lg"
-            className="bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white px-12 py-7 text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all hover:scale-105"
-          >
-            Start Your Success Story
-            <ChevronRight className="w-6 h-6 ml-2" />
-          </Button>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              onClick={onContinue}
+              size="lg"
+              className="bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white px-12 py-7 text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all hover:scale-105"
+            >
+              Start Your Success Story
+              <ChevronRight className="w-6 h-6 ml-2" />
+            </Button>
+            
+            <Button
+              onClick={onLogin}
+              size="lg"
+              variant="outline"
+              className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white px-12 py-7 text-lg shadow-2xl hover:shadow-purple-500/50 transition-all hover:scale-105"
+            >
+              Login
+            </Button>
+          </div>
         </div>
 
         {/* Stats Section */}

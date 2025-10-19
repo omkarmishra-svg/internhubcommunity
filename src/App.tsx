@@ -219,7 +219,7 @@ export default function App() {
         {isLoggedIn && userType === "student" && <AIBanner />}
         
         <main className="flex-1 relative z-10">
-        {currentPage === "reviews" && <ReviewsPage onContinue={handleContinueFromReviews} />}
+        {currentPage === "reviews" && <ReviewsPage onContinue={handleContinueFromReviews} onLogin={handleContinueFromReviews} />}
         
         {currentPage === "login" && <LoginPage onLogin={handleLogin} />}
         
